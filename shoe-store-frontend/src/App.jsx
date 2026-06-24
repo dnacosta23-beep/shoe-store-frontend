@@ -17,6 +17,30 @@ function App() {
     fetchShoes()
   }, [])
 
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    const newShoe = {
+      name: name,
+      price: Number(price)
+    }
+
+    const response = await fetch('http://127.0.0.1:5000/shoes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newShoe),
+    })
+
+    const data = await response.json()
+
+    setMessage(data.message)
+    setShoes([...shoes, data.shoe])
+    setName('')
+    setPrice('')
+  }
+
   return (
     <>
       <h1>Shoe Store</h1>
