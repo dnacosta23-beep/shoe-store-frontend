@@ -19,7 +19,38 @@ function App() {
 
   return (
     <>
-     
+      <h1>Shoe Store</h1>
+
+      <h2>Shoes for Sale</h2>
+
+      {shoes.map((shoe) => (
+        <div key={shoe.id}>
+          <h3>{shoe.name}</h3>
+          <p>${shoe.price}</p>
+        </div>
+      ))}
+
+      <h2>Add a Shoe</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Shoe name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <input
+          type="number"
+          placeholder="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+
+        <button type="submit">Add Shoe</button>
+      </form>
+
+      {message && <p>{message}</p>}
     </>
   )
 }
