@@ -42,13 +42,13 @@ function App() {
   }
 
   return (
-    <>
+  <div className="container">
       <h1>Shoe Store</h1>
 
       <h2>Shoes for Sale</h2>
 
       {shoes.map((shoe) => (
-        <div key={shoe.id}>
+       <div className="shoe-card" key={shoe.id}>
           <h3>{shoe.name}</h3>
           <p>${shoe.price}</p>
         </div>
@@ -74,8 +74,8 @@ function App() {
         <button type="submit">Add Shoe</button>
       </form>
 
-      {message && <p>{message}</p>}
-    </>
+     {message && <p className="message">{message}</p>}
+    </div>
   )
 }
 
